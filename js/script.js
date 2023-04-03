@@ -36,7 +36,7 @@ function date() {
     hours = 12;
   }
 
-  title.innerHTML = `${formatTime(+hours)}:${formatTime(+minutes)}:${formatTime(
+  title.innerHTML = `${+hours}:${formatTime(+minutes)}:${formatTime(
     +seconds
   )} <span class="am-pm">${amPm}</span>`;
 
