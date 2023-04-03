@@ -27,11 +27,8 @@ function date() {
 
   let amPm = "AM";
 
-  if (hours >= 12) {
-    amPm = "PM";
-  }
-
   if (hours > 12) {
+    amPm = "PM";
     hours -= 12;
   }
 
