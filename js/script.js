@@ -21,7 +21,27 @@ const days = ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"];
 function date() {
   const nowDate = new Date();
 
-  title.innerHTML = `${nowDate.toLocaleTimeString()}`;
+  let hours = nowDate.getHours();
+  let minutes = nowDate.getMinutes();
+  let seconds = nowDate.getSeconds();
+
+  let amPm = "AM";
+
+  if (hours >= 12) {
+    amPm = "PM";
+  }
+
+  if (hours > 12) {
+    hours -= 12;
+  }
+
+  if (hours === 0) {
+    hours = 12;
+  }
+
+  title.innerHTML = `${formatTime(+hours)}:${formatTime(+minutes)}:${formatTime(
+    +seconds
+  )} <span class="am-pm">${amPm}</span>`;
 
   const dayWeek = days[nowDate.getDay()];
   const day = nowDate.getDate();
@@ -29,6 +49,16 @@ function date() {
   const year = nowDate.getFullYear();
 
   parraph.innerHTML = `${dayWeek}, ${day} ${month}. ${year}`;
+}
+
+function formatTime(time) {
+  time = +time;
+
+  if (time < 10) {
+    return `0${time}`;
+  } else {
+    return `${time}`;
+  }
 }
 
 setInterval(date, 1000);
